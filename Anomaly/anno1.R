@@ -138,22 +138,22 @@ for (i in key_list) {
       dataL4 = dataL3 %>%
         dplyr::select(k,"week","weekname") 
       
-      ## 아노말리 계산 ##
       
-      # 하루치 보정
+      
+     
       dataL4[[k]] = dataL4[[k]] 
       
-      # 표준편차
+      
       sds = sd(dataL4[[k]])
       
-      # 평균
+      
       means = mean(dataL4[[k]])
       
-      # 아노말리 계산
+      
       anomalys = ((dataL4[[k]] - means)/means)*100
       #anomalys = (dataL4[[k]] - means) / sds
       
-      # 병합
+      
       anomaly_res_part = data.frame(
                                     week = dataL4$week,
                                     key = i,
@@ -175,7 +175,7 @@ for (i in key_list) {
         dplyr::arrange(weeknum)
       
       
-      #병합2
+      
       if(nrow(anomaly_res) == 0) {
         anomaly_res = anomaly_res_part
       } else {

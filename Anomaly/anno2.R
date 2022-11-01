@@ -59,21 +59,21 @@ for (i in key_list) {
         dplyr::select("yyyy","mm",k,"monthName") 
       
       
-      ## 아노말리 계산 ##
+     
       
-      # 하루치 보정
+      
       dataL4[[k]] = dataL4[[k]] 
       
-      # 표준편차
+      
       sds = sd(dataL4[[k]])
       
-      # 평균
+      
       means = mean(dataL4[[k]])
       sds/means
-      # 아노말리 계산
+      
       anomalys = ((dataL4[[k]] - means)/means)*100
       
-      # 병합
+      
       anomaly_res_part = data.frame(yyyy = dataL4$yyyy, 
                                     mm = dataL4$mm,
                                     date = as.Date(paste0(dataL4$yyyy,"-",dataL4$mm,"-01")),
@@ -83,7 +83,7 @@ for (i in key_list) {
                                     contin_name = rep(k,nrow(dataL4)))
       
       
-      #병합2
+      
       if(nrow(anomaly_res) == 0) {
         anomaly_res = anomaly_res_part
       } else {
@@ -110,8 +110,7 @@ anomaly_res2021 = anomaly_res %>%
 
 
 
-#write.csv(anomaly_res,"./월별_아노말리_2019-2021.csv",row.names = F)
-#write.csv(anomaly_res2020,"./월별_아노말리_2020.csv",row.names = F)
+
 write.csv(anomaly_res2021,"./anomalyForMonth_2021.csv",row.names = F)
 
 
